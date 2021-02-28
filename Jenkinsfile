@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
       maven 'Maven3.6.3'
-      hudson.plugins.sonar 'sonarqube'
+      hudson.plugins.sonar.SonarRunnerInstallation 'sonarqube'
     }
 
     stages {
