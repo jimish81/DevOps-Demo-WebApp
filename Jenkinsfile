@@ -2,17 +2,24 @@ pipeline {
     agent any
     tools {
       maven 'Maven3.6.3'
-      hudson.plugins.sonar.SonarRunnerInstallation 'sonarqube'
+   //   hudson.plugins.sonar.SonarRunnerInstallation 'sonarqube'
     }
 
     stages {
         stage('Sonar') {
-                        steps {
-              //  def scannerHome = tool 'sonarqube'
-                withSonarQubeEnv('sonarqube') {
-                    sh "${scannerHome}/bin/sonar-scanner"
-                }
-            }               
+                            stage('Sonarqube') {
+                                environment {
+                                     scannerHome = tool 'sonarqube'
+                                            }
+                            steps {
+                                  withSonarQubeEnv('sonarqube') {
+                                      sh "${scannerHome}/bin/sonar-scanner"
+                                    }
+                               timeout(time: 10, unit: 'MINUTES') {
+                                  waitForQualityGate abortPipeline: true
+        }
+    }
+}           
         }      
         stage('Build') {
             steps {
