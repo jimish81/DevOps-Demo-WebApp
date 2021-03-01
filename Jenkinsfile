@@ -6,7 +6,7 @@ pipeline {
     }
 
     stages {
-        stage('Sonar') {
+       // stage('Sonar') {
                             stage('Sonarqube') {
                                 environment {
                                      scannerHome = tool 'sonarqube'
@@ -20,7 +20,7 @@ pipeline {
         }
     }
 }           
-        }      
+     //   }      
         stage('Build') {
             steps {
                 sh "mvn -B -DskipTests clean package"
