@@ -46,19 +46,16 @@ pipeline {
         }
       }
     }
-             stage ('Push image to Artifactory') { // take that image and push to artifactory
-        steps {
-            rtDockerPush(
-                serverId: "artifactory",
-                image: dockerImage,
-              //  host: 'tcp://localhost:2375',
-                targetRepo: 'https://kiaan14.jfrog.io/artifactory/libs-release-local/WEBPOC/AVNCommunication', // where to copy to (from docker-virtual)
-                // Attach custom properties to the published artifacts:
-              //  properties: 'project-name=docker1;status=stable'
-            )
+                    stage('Push Image') {
+      steps{
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
         }
+      }
     }
-            
+          
 
     }
 }
