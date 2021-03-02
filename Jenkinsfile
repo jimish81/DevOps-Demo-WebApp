@@ -1,7 +1,7 @@
 pipeline {
      environment {
     //login id/docker reposotory defined in Jenkins followe by repository name
-    registry = "jimish22/AVNCommunication"
+    registry = "jimish22/avncommunication"
     //credential = Id given jenkins
     registryCredential = 'docker'
     dockerImage = ''
