@@ -50,7 +50,7 @@ pipeline {
         steps {
             rtDockerPush(
                 serverId: "artifactory",
-                image: docker.build registry + ":$BUILD_NUMBER",
+                image: dockerImage,
               //  host: 'tcp://localhost:2375',
                 targetRepo: 'https://kiaan14.jfrog.io/artifactory/libs-release-local/WEBPOC/AVNCommunication', // where to copy to (from docker-virtual)
                 // Attach custom properties to the published artifacts:
