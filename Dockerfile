@@ -1,5 +1,4 @@
 from tomcat:8.0.20-jre8
 
- \\ RUN mkdir /usr/local/tomcat/webapps
 
 COPY target/AVNCommunication-1.0.war /usr/local/tomcat/webapps/Dockerdemo.war
