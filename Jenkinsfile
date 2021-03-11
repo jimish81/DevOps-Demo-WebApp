@@ -76,7 +76,10 @@ pipeline {
      stage('Remove Unused docker image') {
       steps{
           sh "docker rmi -f $registry:$BUILD_NUMBER"
-          sh 'docker rmi $(docker images -q -f dangling=true)'
+          //sh 'docker rmi $(docker images -q -f dangling=true)'
+            if docker images -f "dangling=true" | grep ago --quiet; then
+    docker rmi -f $(docker images -f "dangling=true" -q)
+ fi
       }
     }
 
