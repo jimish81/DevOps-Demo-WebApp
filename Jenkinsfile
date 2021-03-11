@@ -7,7 +7,6 @@ pipeline {
     dockerImage = ''
     //checked if any container is running with same name node-app container Id will store same & stage cleanup will close that container
     containerId = sh(script: 'docker ps -aqf "name=myApp"', returnStdout: true)
-     build=$BUILD_NUMBER
   }  
     
     agent any
@@ -73,13 +72,6 @@ pipeline {
         sh 'docker run -d -p 8081:8080 --name=myApp $registry:$BUILD_NUMBER &'
       }
              }   
-
-     stage('Remove Unused docker image') {
-      steps{
-          sh "docker rmi -f $registry:build-1
-          //sh 'docker rmi $(docker images -q -f dangling=true)'
-      }
-    }
 
     }
 }
