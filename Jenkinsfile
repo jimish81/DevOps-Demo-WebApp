@@ -72,6 +72,17 @@ pipeline {
         sh 'docker run -d -p 8081:8080 --name=myApp $registry:$BUILD_NUMBER &'
       }
              }   
+         
+         stage('Run UI test')
+          steps{
+            bat ' mvn -f functionaltest/pom.xml test' 
+              }
+                         post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
 
     }
 }
