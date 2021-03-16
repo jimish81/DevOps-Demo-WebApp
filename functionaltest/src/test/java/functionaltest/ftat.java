@@ -31,13 +31,17 @@ public class ftat {
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		// Login Page content check
 		//driver.findElement(By.xpath("//h1[text()='JUPITER COMMUNICATION']")).isDisplayed();
-		driver.findElement(By.name("username")).isDisplayed();
-		driver.findElement(By.name("userpassword")).isDisplayed();
+	//	driver.findElement(By.name("username")).isDisplayed();
+	//	driver.findElement(By.name("userpassword")).isDisplayed();
+		driver.findElement(By.name("Username")).isDisplayed();
+		driver.findElement(By.name("Password")).isDisplayed();
 		driver.findElement(By.xpath("//button[text()='Login']")).isDisplayed();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		// Login operation
-		driver.findElement(By.name("username")).sendKeys("guest");
-		driver.findElement(By.name("userpassword")).sendKeys("guest");
+		//driver.findElement(By.name("username")).sendKeys("guest");
+		//driver.findElement(By.name("userpassword")).sendKeys("guest");
+		driver.findElement(By.name("Username")).sendKeys("guest");
+		driver.findElement(By.name("Password")).sendKeys("guest");
 		driver.findElement(By.xpath("//button[text()='Login']")).click();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
