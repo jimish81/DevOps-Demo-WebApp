@@ -73,7 +73,7 @@ pipeline {
       }
              }   
          
-         stage('Run UI test')
+         stage('Run UI test') {
           steps{
             bat ' mvn -f functionaltest/pom.xml test' 
               }
